@@ -14,6 +14,9 @@ const routes = [
     children:[{
       path: "/admin",
       component: () => import('../views/admin/pages/board.vue')
+    },{
+      path: "/admin/profile",
+      component: () => import('../views/admin/pages/profile.vue')
     }]
   }
 ]

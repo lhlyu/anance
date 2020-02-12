@@ -37,7 +37,7 @@
   }
 
   .an-glass,.h-menu-ul{
-    background: rgba(#ffffff,0.3) !important;
+    background: rgba(#ffffff,0.4) !important;
   }
 
   .fade-enter, .fade-leave-to {
@@ -48,5 +48,16 @@
   }
   .fade-enter-active, .fade-leave-active {
     transition: all 1s
+  }
+
+  .v-enter{
+    opacity: 0;
+  }
+  .v-leave-to{
+    display: none;
+  }
+  .v-enter-active,
+  .v-leave-active{
+    transition: all 0.4s ease;
   }
 </style>

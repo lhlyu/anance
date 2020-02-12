@@ -9,7 +9,7 @@
 
                     <Cell :width="2" style="float: right;margin-right: 50px">
                         <DropdownCustom :toggle-icon="false" class-name="h-text-dropdown" trigger="hover">
-                            <span>Lv9.谕℃</span>
+                            <Nameplate :data="{role:'Lv9.守护者',name:'谕℃'}"></Nameplate>
                             <div slot="content" v-width="160">
                                 <div v-padding="20">
                                     <img :width="80" :height="80" style="border-radius:80px;float:left" src="https://portrait.gitee.com/uploads/avatars/user/585/1757827_lhlyu_1578959298.png!avatar100">
@@ -17,7 +17,7 @@
                                 </div>
                                 <Row style="line-height:40px;border-top:1px solid #EEE;">
                                     <Cell width=12 class="text-center" style="border-right:1px solid #EEE;">
-                                        <a>个人中心</a>
+                                        <router-link to="/admin/profile">个人中心</router-link>
                                     </Cell>
                                     <Cell width=12 class="text-center">
                                         <router-link to="/">注销</router-link>
@@ -35,13 +35,13 @@
                 <Content class="an-glass" style="padding: 16px">
                     <div style="min-height: calc(100vh - 145px)">
                         <keep-alive>
-                            <transition name="fade">
+                            <transition name="v">
                                 <router-view></router-view>
                             </transition>
                         </keep-alive>
                     </div>
                     <HFooter class="text-center">Copyright © 2020
-                        <a href="http://www.ch-un.com" target="_blank">Lhlyu</a>
+                        <a href="https://github.com/lhlyu/anance" target="_blank">Lhlyu</a>
                     </HFooter>
                 </Content>
             </Layout>
@@ -51,14 +51,14 @@
 
 <script>
 
+    import Nameplate from '@/components/nameplate'
 
     export default {
         components:{
+            Nameplate
         },
         data() {
             return {
-                src: 'https://i1.go2yd.com/image.php?url=0Kvq81cKR1',
-                param: [{ title: '测试1', key: 'test1' }, { title: '测试2', key: 'test2' }, { title: '测试3', key: 'test3' }],
                 menuItems:[{
                     title: "仪表板",
                     key: "admin.board",
@@ -121,12 +121,37 @@
                 }]
             };
         },
+        watch:{
+            // 监视路由变动修改到指定的菜单
+            $route(to,from){
+                this.select(to)
+            }
+        },
+        mounted(){
+            this.$nextTick(() => {
+                this.select(this.$route)
+            })
+        },
         methods:{
-            select(key) {
-                this.$refs.menu.select(key);
+            select(to) {
+                for(let m of this.menuItems){
+                    if(m.href && m.href == to.path){
+                        this.$refs.menu.select(m.key)
+                        return
+                    }
+                    if(m.children && m.children.length > 0){
+                        for(let c of m.children){
+                            if(c.href && c.href == to.path){
+                                this.$refs.menu.select(c.key)
+                                return
+                            }
+                        }
+                    }
+                }
+
             },
             menuSelectHandler(menu){
-                console.log(menu)
+                this.$router.push(menu.href)
             }
         }
     };

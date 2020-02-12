@@ -58,9 +58,7 @@
                         this.$Message.error("暂不支持手机登陆！")
                         return
                     }
-                    this.$router.push({
-                        "path":"/admin"
-                    })
+                    this.$router.push("/admin")
                     return
                 }
                 this.$Message.error("账号或密码为空！")
