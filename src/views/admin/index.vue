@@ -1,19 +1,19 @@
 <template>
     <div class="an-admin">
-        <Layout style="height:100vh;" class="an-glass">
+        <Layout style="min-height:100vh;">
             <HHeader>
                 <Row justify="center">
                     <Cell :width="2" class="primary-color">
                         <h1>Anance</h1>
                     </Cell>
 
-                    <Cell :width="2" style="float: right;margin-right: 50px">
+                    <Cell :width="3" style="float: right;margin-right: 50px">
                         <DropdownCustom :toggle-icon="false" class-name="h-text-dropdown" trigger="hover">
-                            <Nameplate :data="{role:'Lv9.守护者',name:'谕℃'}"></Nameplate>
+                            <Nameplate :data="$user"></Nameplate>
                             <div slot="content" v-width="160">
                                 <div v-padding="20">
-                                    <img :width="80" :height="80" style="border-radius:80px;float:left" src="https://portrait.gitee.com/uploads/avatars/user/585/1757827_lhlyu_1578959298.png!avatar100">
-                                    <div style="height:80px;margin-left:90px;line-height:80px;">Lhlyu</div>
+                                    <img :width="80" :height="80" style="border-radius:80px;float:left" :src="$user.avatar">
+                                    <div style="height:80px;margin-left:90px;line-height:80px;">{{$user.name}}</div>
                                 </div>
                                 <Row style="line-height:40px;border-top:1px solid #EEE;">
                                     <Cell width=12 class="text-center" style="border-right:1px solid #EEE;">
@@ -28,12 +28,12 @@
                     </Cell>
                 </Row>
             </HHeader>
-            <Layout class="an-glass">
+            <Layout>
                 <Sider>
-                    <Menu accordion className="h-menu-white an-glass" :datas="menuItems" ref="menu" @select="menuSelectHandler"></Menu>
+                    <Menu accordion className="h-menu-white" :datas="menuItems" ref="menu" @select="menuSelectHandler"></Menu>
                 </Sider>
                 <Content class="an-glass" style="padding: 16px">
-                    <div style="min-height: calc(100vh - 145px)">
+                    <div style="min-height: calc(100vh - 180px)">
                         <keep-alive>
                             <transition name="v">
                                 <router-view></router-view>
@@ -41,7 +41,7 @@
                         </keep-alive>
                     </div>
                     <HFooter class="text-center">Copyright © 2020
-                        <a href="https://github.com/lhlyu/anance" target="_blank">Lhlyu</a>
+                        <a :href="$author.url" class="primary-color" target="_blank">{{$author.name}}</a>
                     </HFooter>
                 </Content>
             </Layout>
@@ -50,6 +50,7 @@
 </template>
 
 <script>
+
 
     import Nameplate from '@/components/nameplate'
 
@@ -117,6 +118,10 @@
                         title: "操作日志",
                         key: "admin.log",
                         href: "/admin/log"
+                    },{
+                        title: "网站设置",
+                        key: "admin.setting",
+                        href: "/admin/setting"
                     }]
                 }]
             };
@@ -153,7 +158,8 @@
             menuSelectHandler(menu){
                 this.$router.push(menu.href)
             }
-        }
+        },
+
     };
 </script>
 
@@ -165,7 +171,6 @@
         top: 0;
         left: 0;
         .h-layout {
-            background: #f0f2f5;
         }
         .h-layout-header {
             padding: 0 25px;

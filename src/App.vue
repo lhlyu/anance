@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <BG :url="url"></BG>
+    <BG :url="$website.bg"></BG>
     <transition name="fade">
       <router-view/>
     </transition>
@@ -12,20 +12,19 @@
 
   export default {
     components: {
-      BG
-    },
-    data() {
-      return {
-        url: "https://cdn.jsdelivr.net/gh/lhlyu/pb@master/2020/violet.png",
-      }
+      BG,
     }
   }
 </script>
 
 <style lang="scss">
+  *{
+    scroll-behavior: smooth;
+  }
   body{
     width: 100vw !important;
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
   #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -36,8 +35,9 @@
     min-height: 100vh;
   }
 
-  .an-glass,.h-menu-ul{
-    background: rgba(#ffffff,0.4) !important;
+  .h-select-show,
+  .h-autocomplete-show{
+    @extend .an-glass;
   }
 
   .fade-enter, .fade-leave-to {

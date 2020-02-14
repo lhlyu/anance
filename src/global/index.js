@@ -1,5 +1,7 @@
 
-import isMobile from 'ismobilejs';
+import isMobile from 'ismobilejs'
+
+import { mapState } from 'vuex'
 
 export default {
     install: function (Vue) {
@@ -13,6 +15,16 @@ export default {
             }
             return false
         }
+
+        // mixin
+        Vue.mixin({
+            methods: {
+
+            },
+            computed: {
+                ...mapState(['$author','$user','$roles','$website'])
+            }
+        })
 
     }
 }

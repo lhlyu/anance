@@ -1,10 +1,10 @@
 <template>
     <div v-if="data" class="an-nameplate">
         <div class="an-nameplate-role">
-            <span class="bg-primary-color">{{data.role}}</span>
+            <span class="bg-primary-color">{{getRoleName(data.role)}}</span>
         </div>
         <div class="an-nameplate-name primary-color">
-            {{data.name}}
+            {{data.nickName || data.name}}
         </div>
     </div>
 </template>
@@ -16,6 +16,23 @@
             data: {
                 type: Object,
                 default: null
+            }
+        },
+        data(){
+            return {
+
+            }
+        },
+        methods:{
+            getRoleName(role){
+                let type = Object.prototype.toString.call(role)
+                if(type != `[object Number]`){
+                    role = 0
+                }
+                if(role < 0 || role >= this.$roles.length){
+                    role = 0
+                }
+                return this.$roles[role]
             }
         }
     }

@@ -8,7 +8,7 @@
                     </span>
                     <span class="h-panel-right">
                         <a href="https://github.com/lhlyu/anance" target="_blank">
-                            <i class="h-icon-github"></i>
+                            <i class="h-icon-github primary-color"></i>
                         </a>
                     </span>
                 </div>
@@ -27,7 +27,7 @@
                             </div>
                         </Cell>
                         <Cell :width="24">
-                            <button class="h-btn h-btn-primary" :style="style" @click="onLogin" @keydown.enter="onLogin">登陆</button>
+                            <button class="h-btn primary-color" :style="style" @click="onLogin" @keydown.enter="onLogin">登陆</button>
                         </Cell>
                     </Row>
                 </div>
@@ -78,7 +78,6 @@
             width: 350px;
             transform: translate3d(0,-50%,0);
             .h-panel{
-                background: rgba(#ffffff,0.7);
                 box-shadow: 0 0 50px 10px rgba(#ffffff,0.5);
             }
         }

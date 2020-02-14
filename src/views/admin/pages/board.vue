@@ -3,7 +3,7 @@
         <Row :space="9">
             <Cell :width="12">
                 <div class="an-gist">
-                    <div class="h-panel h-panel-no-border an-glass">
+                    <div class="h-panel h-panel-no-border">
                         <div class="h-panel-bar">
                             <span class="h-panel-title primary-color"><i class="h-icon-star"></i> 随心所记</span>
                         </div>
@@ -13,7 +13,7 @@
                         <div class="h-panel-body">
                             <textarea v-model="data.content" :disabled="isloading" class="an-glass" style="width: 100%"></textarea>
                             <br><br>
-                            <Button transparent text-color="primary" :disabled="isloading || data.content.length == 0" @click="save">提交</Button>
+                            <Button class="primary-color an-glass" transparent :disabled="isloading || data.content.length == 0" @click="save">提交</Button>
                         </div>
                     </div>
                 </div>

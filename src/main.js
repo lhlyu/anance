@@ -5,8 +5,7 @@ import store from './store'
 import global from './global'
 import HeyUI from 'heyui'
 
-import "heyui/themes/index.css"
-import "./global/pink.css"
+import "./assets/pink.css"
 
 import "@/global/yh.js"
 
