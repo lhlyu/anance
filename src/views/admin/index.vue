@@ -111,13 +111,9 @@
                     key: "admin.website",
                     icon: "h-icon-setting",
                     children: [{
-                        title: "统计数据",
-                        key: "admin.stat",
-                        href: "/admin/stat"
-                    },{
                         title: "操作日志",
-                        key: "admin.log",
-                        href: "/admin/log"
+                        key: "admin.record",
+                        href: "/admin/record"
                     },{
                         title: "网站设置",
                         key: "admin.setting",

@@ -36,8 +36,15 @@
   }
 
   .h-select-show,
-  .h-autocomplete-show{
+  .h-autocomplete-show,
+  .h-numberinput-show{
     @extend .an-glass;
+  }
+
+  .limit-row{
+    white-space:nowrap;/*规定段落中的文本不进行换行*/
+    overflow:hidden;/*内容会被修剪，并且其余内容是不可见的。*/
+    text-overflow:ellipsis;/*显示省略号来代表被修剪的文本*/
   }
 
   .fade-enter, .fade-leave-to {

@@ -1,6 +1,16 @@
-
+$themeColor: #fb7299;
 $glass: rgba(#ffffff,0.45) !important;
 
 .an-glass{
   background: $glass;
 }
+
+blockquote {
+  padding: 5px 5px 3px 10px;
+  line-height: 1.5;
+  font-weight: 600;
+  border-left: 4px solid $themeColor;
+  font-size: 12px;
+  margin: 20px 0;
+}
+

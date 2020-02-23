@@ -27,11 +27,8 @@ const routes = [
       path: "/admin/comment",
       component: () => import('../views/admin/pages/comment.vue')
     },{
-      path: "/admin/stat",
-      component: () => import('../views/admin/pages/stat.vue')
-    },{
-      path: "/admin/log",
-      component: () => import('../views/admin/pages/log.vue')
+      path: "/admin/record",
+      component: () => import('../views/admin/pages/record.vue')
     },{
       path: "/admin/setting",
       component: () => import('../views/admin/pages/setting.vue')
@@ -56,7 +53,7 @@ const routes = [
 
 const router = new VueRouter({
   mode: 'history',
-  base: process.env.BASE_URL,
+  // base: process.env.BASE_URL,
   routes
 })
 

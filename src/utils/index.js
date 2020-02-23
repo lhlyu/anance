@@ -1,17 +1,15 @@
 
 // 图片异步加载
 function loadImageAsync(url){
-    return new Promise((resolve,reject)=>{
-        let image = new Image();
-        image.onload = function(){
-            resolve(image);
-        };
-        image.onerror = function(){
-            resolve({
-                src: null
-            });
+    return new Promise( (resolve,reject) => {
+        let img = new Image()
+        img.src = url
+        img.onload = () => {
+            resolve(img)
         }
-        image.src = url;
+        img.onerror = () => {
+            resolve({src: null})
+        }
     })
 }
 

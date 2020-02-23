@@ -10,10 +10,14 @@
 
     export default {
         props:{
-          url: {                 // 背景图片，支持多张图
+            url: {                 // 背景图片，支持多张图
               type: String|Array,
               default: null
-          }
+            },
+            carousel: {            // false - 不轮播
+                type: Boolean,
+                default: false
+            }
         },
         data(){
             return {
@@ -26,6 +30,30 @@
             })
         },
         methods:{
+            init(){
+                let imgs = []
+                let type = Object.prototype.toString.call(this.url)
+                if(type == `[object String]`){
+                    if(this.url.length == 0){
+                        return
+                    }
+                    imgs.push(this.url)
+                }else if(type == `[object Array]`){
+                    for(let v of this.url){
+                        if(Object.prototype.toString.call(v) == `[object String]`){}
+                    }
+                }else{
+                    return
+                }
+            },
+            // 加载单张图片
+            lazyImage(){
+
+            },
+            // 轮播多张图片
+            carouselImages(){
+
+            },
             loadImg(){
                 let carousels = []
                 let type = Object.prototype.toString.call(this.url)

@@ -25,14 +25,7 @@
         },
         methods:{
             getRoleName(role){
-                let type = Object.prototype.toString.call(role)
-                if(type != `[object Number]`){
-                    role = 0
-                }
-                if(role < 0 || role >= this.$roles.length){
-                    role = 0
-                }
-                return this.$roles[role]
+                return this.$roles[role] ? this.$roles[role] : this.$roles[0]
             }
         }
     }

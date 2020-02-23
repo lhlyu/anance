@@ -1,5 +1,7 @@
+const isProduction = process.env.NODE_ENV === 'production'
+
 module.exports = {
-    publicPath: '/',
+    publicPath: isProduction ? 'https://cdn.jsdelivr.net/gh/lhlyu/anance@gh-pages/' : '/',
     outputDir: './dist',
     configureWebpack: config => {
         config['externals'] = {
